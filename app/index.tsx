@@ -4,6 +4,9 @@ import { Link } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
+import colors from "@/constants/colors";
+import { defaultStyles } from "@/constants/styles";
+
 const Page = () => {
   const [assets] = useAssets([require("@/assets/videos/intro.mp4")]);
 
@@ -26,15 +29,29 @@ const Page = () => {
         </Text>
 
         <View style={styles.buttonsCOntainer}>
-          <Link href="/login" asChild>
+          <Link
+            href="/login"
+            asChild
+            style={[
+              defaultStyles.pillButton,
+              { backgroundColor: colors.dark, flex: 1 },
+            ]}
+          >
             <TouchableOpacity>
-              <Text>Login</Text>
+              <Text style={[styles.buttonText, { color: "white" }]}>Login</Text>
             </TouchableOpacity>
           </Link>
 
-          <Link href={"/signUp"} asChild>
+          <Link
+            href={"/signUp"}
+            asChild
+            style={[
+              defaultStyles.pillButton,
+              { flex: 1, backgroundColor: "white" },
+            ]}
+          >
             <TouchableOpacity>
-              <Text>Signup</Text>
+              <Text style={styles.buttonText}>Sign up</Text>
             </TouchableOpacity>
           </Link>
         </View>
@@ -68,10 +85,14 @@ const styles = StyleSheet.create({
   },
 
   buttonsCOntainer: {
-    backgroundColor: "white",
     flexDirection: "row",
     justifyContent: "center",
     gap: 30,
+  },
+
+  buttonText: {
+    fontSize: 22,
+    fontWeight: "bold",
   },
 });
 

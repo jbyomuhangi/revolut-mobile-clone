@@ -1,7 +1,5 @@
 import { StyleSheet } from "react-native";
 
-import colors from "@/constants/colors";
-
 export const defaultStyles = StyleSheet.create({
   // container: {
   //   flex: 1,
@@ -12,13 +10,13 @@ export const defaultStyles = StyleSheet.create({
   //   fontSize: 40,
   //   fontWeight: "700",
   // },
-  // pillButton: {
-  //   padding: 10,
-  //   height: 60,
-  //   borderRadius: 40,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
+  pillButton: {
+    padding: 10,
+    height: 60,
+    borderRadius: 40,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   // textLink: {
   //   color: colors.primary,
   //   fontSize: 18,
