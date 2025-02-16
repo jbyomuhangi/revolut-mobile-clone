@@ -10,6 +10,8 @@ export {
   ErrorBoundary,
 } from "expo-router";
 
+import colors from "@/constants/colors";
+
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
@@ -35,6 +37,14 @@ const RootLayout = () => {
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen
+        name="signup"
+        options={{
+          title: "",
+          headerShadowVisible: false,
+          headerStyle: { backgroundColor: colors.background },
+        }}
+      />
     </Stack>
   );
 };

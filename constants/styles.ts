@@ -1,15 +1,14 @@
 import { StyleSheet } from "react-native";
 
+import colors from "./colors";
+
 export const defaultStyles = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  //   backgroundColor: colors.background,
-  //   padding: 16,
-  // },
-  // header: {
-  //   fontSize: 40,
-  //   fontWeight: "700",
-  // },
+  container: {
+    flex: 1,
+    backgroundColor: colors.background,
+    padding: 16,
+  },
+
   pillButton: {
     padding: 10,
     height: 60,
@@ -17,21 +16,28 @@ export const defaultStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  // textLink: {
-  //   color: colors.primary,
-  //   fontSize: 18,
-  //   fontWeight: "500",
-  // },
-  // descriptionText: {
-  //   fontSize: 18,
-  //   marginTop: 20,
-  //   color: colors.gray,
-  // },
-  // buttonText: {
-  //   color: "#fff",
-  //   fontSize: 18,
-  //   fontWeight: "500",
-  // },
+
+  h1: {
+    fontSize: 40,
+    fontWeight: "700",
+  },
+
+  descriptionText: {
+    fontSize: 18,
+    color: colors.gray,
+  },
+
+  textLink: {
+    color: colors.primary,
+    fontSize: 18,
+    fontWeight: "500",
+  },
+
+  buttonText: {
+    fontSize: 18,
+    fontWeight: "500",
+  },
+
   // pillButtonSmall: {
   //   paddingHorizontal: 20,
   //   height: 40,

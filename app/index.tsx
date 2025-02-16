@@ -38,12 +38,14 @@ const Page = () => {
             ]}
           >
             <TouchableOpacity>
-              <Text style={[styles.buttonText, { color: "white" }]}>Login</Text>
+              <Text style={[defaultStyles.buttonText, { color: "white" }]}>
+                Log in
+              </Text>
             </TouchableOpacity>
           </Link>
 
           <Link
-            href={"/signUp"}
+            href="/signup"
             asChild
             style={[
               defaultStyles.pillButton,
@@ -51,7 +53,7 @@ const Page = () => {
             ]}
           >
             <TouchableOpacity>
-              <Text style={styles.buttonText}>Sign up</Text>
+              <Text style={defaultStyles.buttonText}>Sign up</Text>
             </TouchableOpacity>
           </Link>
         </View>
@@ -88,11 +90,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     gap: 30,
-  },
-
-  buttonText: {
-    fontSize: 22,
-    fontWeight: "bold",
   },
 });
 
