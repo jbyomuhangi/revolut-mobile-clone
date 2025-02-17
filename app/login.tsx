@@ -11,6 +11,7 @@ import {
 import Divider from "@/components/Divider";
 import colors from "@/constants/colors";
 import { defaultStyles } from "@/constants/styles";
+import { Link } from "expo-router";
 
 const Page = () => {
   return (
@@ -34,6 +35,14 @@ const Page = () => {
           keyboardType="numeric"
         />
       </View>
+
+      <Link asChild replace href="/signup">
+        <TouchableOpacity>
+          <Text style={defaultStyles.textLink}>
+            Dont have an account? Sign up
+          </Text>
+        </TouchableOpacity>
+      </Link>
 
       <TouchableOpacity
         style={[
