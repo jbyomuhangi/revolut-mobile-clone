@@ -28,7 +28,7 @@ const Page = () => {
         />
 
         <TextInput
-          style={[styles.input, styles.phoneNumberInput]}
+          style={[styles.input, { flex: 1 }]}
           placeholder="Mobile number"
           keyboardType="numeric"
         />
@@ -68,10 +68,6 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     backgroundColor: colors.lightGray,
     fontSize: 20,
-  },
-
-  phoneNumberInput: {
-    flex: 1,
   },
 });
 
