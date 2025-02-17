@@ -1,3 +1,5 @@
+import { useSignUp } from "@clerk/clerk-expo";
+import { Link, useRouter } from "expo-router";
 import React from "react";
 import {
   StyleSheet,
@@ -9,9 +11,25 @@ import {
 
 import colors from "@/constants/colors";
 import { defaultStyles } from "@/constants/styles";
-import { Link } from "expo-router";
 
 const Page = () => {
+  const router = useRouter();
+  const { signUp } = useSignUp();
+
+  const onSignUp = async () => {
+    const phoneNumber = "";
+
+    try {
+      await signUp!.create({ phoneNumber });
+      router.push({
+        pathname: "/verify/[phone]",
+        params: { phone: phoneNumber },
+      });
+    } catch (error) {
+      console.error("Error signing up: ", error);
+    }
+  };
+
   return (
     <View style={defaultStyles.container}>
       <Text style={defaultStyles.h1}>Lets get started!</Text>
@@ -47,6 +65,7 @@ const Page = () => {
           defaultStyles.pillButton,
           { backgroundColor: colors.primary, marginTop: "auto" },
         ]}
+        onPress={onSignUp}
       >
         <Text style={[defaultStyles.buttonText, { color: "white" }]}>
           Sign up

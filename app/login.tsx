@@ -1,4 +1,6 @@
+import { useSignIn } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
+import { Link, useRouter } from "expo-router";
 import React from "react";
 import {
   StyleSheet,
@@ -11,9 +13,32 @@ import {
 import Divider from "@/components/Divider";
 import colors from "@/constants/colors";
 import { defaultStyles } from "@/constants/styles";
-import { Link } from "expo-router";
+
+enum SignInType {
+  Phone,
+  Email,
+}
 
 const Page = () => {
+  const router = useRouter();
+  const { signIn } = useSignIn();
+
+  const onSignIn = async (type: SignInType) => {
+    switch (type) {
+      case SignInType.Phone: {
+        return;
+      }
+
+      case SignInType.Email: {
+        return;
+      }
+
+      default: {
+        return;
+      }
+    }
+  };
+
   return (
     <View style={defaultStyles.container}>
       <Text style={defaultStyles.h1}>Welcome back</Text>
