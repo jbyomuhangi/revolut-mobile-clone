@@ -1,4 +1,5 @@
 import { useSignIn } from "@clerk/clerk-expo";
+import { SignInFirstFactor } from "@clerk/types";
 import { Ionicons } from "@expo/vector-icons";
 import { Link, useRouter } from "expo-router";
 import React from "react";
@@ -24,12 +25,42 @@ const Page = () => {
   const { signIn } = useSignIn();
 
   const onSignIn = async (type: SignInType) => {
+    if (!signIn) return;
+
     switch (type) {
       case SignInType.Phone: {
-        return;
-      }
+        try {
+          const phoneNumber = "";
 
-      case SignInType.Email: {
+          const { supportedFirstFactors } = await signIn.create({
+            identifier: phoneNumber,
+          });
+
+          const firstPhoneFactor = supportedFirstFactors?.find(
+            (factor: SignInFirstFactor) => {
+              return factor.strategy === "phone_code";
+            }
+          );
+
+          if (!firstPhoneFactor) {
+            throw new Error("No phone number id found");
+          }
+
+          const { phoneNumberId } = firstPhoneFactor;
+
+          await signIn.prepareFirstFactor({
+            strategy: "phone_code",
+            phoneNumberId,
+          });
+
+          router.push({
+            pathname: "/verify/[phone]",
+            params: { phone: phoneNumber, signIn: "true" },
+          });
+        } catch (error) {
+          console.error(error);
+        }
+
         return;
       }
 

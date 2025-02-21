@@ -17,10 +17,12 @@ const Page = () => {
   const { signUp } = useSignUp();
 
   const onSignUp = async () => {
+    if (!signUp) return;
+
     const phoneNumber = "";
 
     try {
-      await signUp!.create({ phoneNumber });
+      await signUp.create({ phoneNumber });
       router.push({
         pathname: "/verify/[phone]",
         params: { phone: phoneNumber },
