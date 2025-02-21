@@ -37,7 +37,7 @@ const Page = () => {
       <Text style={defaultStyles.h1}>Lets get started!</Text>
 
       <Text style={[defaultStyles.descriptionText, { marginTop: 10 }]}>
-        Enter your phone number, we will send you a verification code
+        Enter your phone number, we will send you a verification code.
       </Text>
 
       <View style={styles.inputContainer}>
