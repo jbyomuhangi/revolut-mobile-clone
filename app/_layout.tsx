@@ -73,6 +73,15 @@ const RootLayoutNav = () => {
       />
 
       <Stack.Screen name="help" options={{ title: "Help" }} />
+
+      <Stack.Screen
+        name="verify/[phone]"
+        options={{
+          title: "",
+          headerShadowVisible: false,
+          headerStyle: { backgroundColor: colors.background },
+        }}
+      />
     </Stack>
   );
 };
