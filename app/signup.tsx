@@ -19,10 +19,12 @@ const Page = () => {
   const onSignUp = async () => {
     if (!signUp) return;
 
-    const phoneNumber = "";
+    const phoneNumber = `+60148381059`;
 
     try {
       await signUp.create({ phoneNumber });
+      signUp.preparePhoneNumberVerification();
+
       router.push({
         pathname: "/verify/[phone]",
         params: { phone: phoneNumber },

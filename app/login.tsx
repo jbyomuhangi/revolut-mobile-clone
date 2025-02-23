@@ -30,7 +30,7 @@ const Page = () => {
     switch (type) {
       case SignInType.Phone: {
         try {
-          const phoneNumber = "";
+          const phoneNumber = `+60148381059`;
 
           const { supportedFirstFactors } = await signIn.create({
             identifier: phoneNumber,
@@ -105,6 +105,7 @@ const Page = () => {
           defaultStyles.pillButton,
           { backgroundColor: colors.primary, marginTop: 30 },
         ]}
+        onPress={() => onSignIn(SignInType.Phone)}
       >
         <Text style={[defaultStyles.buttonText, { color: "white" }]}>
           Continue

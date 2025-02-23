@@ -1,4 +1,4 @@
-import { ClerkLoaded, ClerkProvider } from "@clerk/clerk-expo";
+import { ClerkLoaded, ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFonts } from "expo-font";
@@ -25,16 +25,17 @@ const RootLayoutNav = () => {
     ...FontAwesome.font,
   });
 
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
-  useEffect(() => {
-    if (error) throw error;
-  }, [error]);
+  const { isLoaded, isSignedIn } = useAuth();
 
   useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
+    // Expo Router uses Error Boundaries to catch errors in the navigation tree.
+    if (error) throw error;
+    if (loaded) SplashScreen.hideAsync();
+  }, [loaded, error]);
+
+  useEffect(() => {
+    console.log("isSignedIn: ", isSignedIn);
+  }, [isSignedIn]);
 
   if (!loaded) return null;
 
