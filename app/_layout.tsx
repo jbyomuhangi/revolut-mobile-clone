@@ -2,10 +2,10 @@ import { ClerkLoaded, ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFonts } from "expo-font";
-import { Link, Stack } from "expo-router";
+import { Link, Stack, useRouter, useSegments } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useEffect } from "react";
-import { TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import "react-native-reanimated";
 
 export {
@@ -26,18 +26,41 @@ const RootLayoutNav = () => {
   });
 
   const { isLoaded, isSignedIn } = useAuth();
+  const segments = useSegments();
+  const router = useRouter();
+
+  const isLoadingApp = !loaded || !isLoaded;
 
   useEffect(() => {
     // Expo Router uses Error Boundaries to catch errors in the navigation tree.
     if (error) throw error;
     if (loaded) SplashScreen.hideAsync();
-  }, [loaded, error]);
+  }, [error, loaded]);
 
+  /** THis effect handles route protection */
   useEffect(() => {
-    console.log("isSignedIn: ", isSignedIn);
-  }, [isSignedIn]);
+    if (isLoadingApp) return;
 
-  if (!loaded) return null;
+    if (!isSignedIn) {
+      router.replace("/");
+      return;
+    }
+
+    const isInAuthGroup = segments[0] === "(authenticated)";
+
+    if (!isInAuthGroup) {
+      router.replace("/(authenticated)/(tabs)/home");
+      return;
+    }
+  }, [isLoadingApp, isSignedIn, segments]);
+
+  if (isLoadingApp) {
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
 
   return (
     <Stack>
@@ -82,6 +105,11 @@ const RootLayoutNav = () => {
           headerShadowVisible: false,
           headerStyle: { backgroundColor: colors.background },
         }}
+      />
+
+      <Stack.Screen
+        name="(authenticated)/(tabs)"
+        options={{ headerShown: false }}
       />
     </Stack>
   );
