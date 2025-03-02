@@ -25,11 +25,12 @@ const RootLayoutNav = () => {
     ...FontAwesome.font,
   });
 
-  const { isLoaded, isSignedIn } = useAuth();
+  // const { isLoaded, isSignedIn } = useAuth();
   const segments = useSegments();
   const router = useRouter();
 
-  const isLoadingApp = !loaded || !isLoaded;
+  // const isLoadingApp = !loaded || !isLoaded;
+  const isLoadingApp = !loaded;
 
   useEffect(() => {
     // Expo Router uses Error Boundaries to catch errors in the navigation tree.
@@ -37,22 +38,27 @@ const RootLayoutNav = () => {
     if (loaded) SplashScreen.hideAsync();
   }, [error, loaded]);
 
-  /** THis effect handles route protection */
   useEffect(() => {
     if (isLoadingApp) return;
+    router.replace("/(authenticated)/(tabs)/home");
+  }, [isLoadingApp]);
 
-    if (!isSignedIn) {
-      router.replace("/");
-      return;
-    }
+  // /** THis effect handles route protection */
+  // useEffect(() => {
+  //   if (isLoadingApp) return;
 
-    const isInAuthGroup = segments[0] === "(authenticated)";
+  //   if (!isSignedIn) {
+  //     router.replace("/");
+  //     return;
+  //   }
 
-    if (!isInAuthGroup) {
-      router.replace("/(authenticated)/(tabs)/home");
-      return;
-    }
-  }, [isLoadingApp, isSignedIn, segments]);
+  //   const isInAuthGroup = segments[0] === "(authenticated)";
+
+  //   if (!isInAuthGroup) {
+  //     router.replace("/(authenticated)/(tabs)/home");
+  //     return;
+  //   }
+  // }, [isLoadingApp, isSignedIn, segments]);
 
   if (isLoadingApp) {
     return (
@@ -126,11 +132,11 @@ const RootLayout = () => {
   }
 
   return (
-    <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
-      <ClerkLoaded>
-        <RootLayoutNav />
-      </ClerkLoaded>
-    </ClerkProvider>
+    // <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
+    //   <ClerkLoaded>
+    <RootLayoutNav />
+    //   </ClerkLoaded>
+    // </ClerkProvider>
   );
 };
 
