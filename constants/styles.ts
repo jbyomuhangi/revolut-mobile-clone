@@ -30,6 +30,11 @@ export const defaultStyles = StyleSheet.create({
     fontWeight: "700",
   },
 
+  h2: {
+    fontSize: 20,
+    fontWeight: "700",
+  },
+
   descriptionText: {
     fontSize: 18,
     color: colors.gray,
@@ -50,12 +55,6 @@ export const defaultStyles = StyleSheet.create({
   //   color: "#fff",
   //   fontSize: 16,
   //   fontWeight: "500",
-  // },
-  // sectionHeader: {
-  //   fontSize: 20,
-  //   fontWeight: "bold",
-  //   margin: 20,
-  //   marginBottom: 10,
   // },
   // block: {
   //   marginHorizontal: 20,
