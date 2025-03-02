@@ -17,6 +17,14 @@ export const defaultStyles = StyleSheet.create({
     alignItems: "center",
   },
 
+  pillButtonSmall: {
+    paddingHorizontal: 20,
+    height: 40,
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
   h1: {
     fontSize: 40,
     fontWeight: "700",
@@ -38,13 +46,6 @@ export const defaultStyles = StyleSheet.create({
     fontWeight: "500",
   },
 
-  // pillButtonSmall: {
-  //   paddingHorizontal: 20,
-  //   height: 40,
-  //   borderRadius: 20,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
   // buttonTextSmall: {
   //   color: "#fff",
   //   fontSize: 16,
