@@ -98,7 +98,6 @@ const Page = () => {
           )}
 
           {transactions.map((transaction) => {
-            console.log(typeof transaction.date);
             return (
               <View
                 key={transaction.id}
