@@ -68,7 +68,7 @@ const Page = () => {
   };
 
   return (
-    <ScrollView style={{ padding: 20 }}>
+    <ScrollView contentContainerStyle={{ padding: 20 }}>
       <View style={styles.account}>
         <View style={styles.balanceContainer}>
           <Text style={styles.balance}>{balance}</Text>
@@ -123,7 +123,9 @@ const Page = () => {
                   </Text>
                 </View>
 
-                <Text>{transaction.amount}$</Text>
+                <Text style={{ fontWeight: "bold", color: "green" }}>
+                  + ${transaction.amount}
+                </Text>
               </View>
             );
           })}
