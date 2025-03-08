@@ -2,11 +2,11 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
+import MoreActionIcon from "@/components/pages/home/MoreActionIcon";
+import RoundIconButton from "@/components/pages/home/RoundIconButton";
 import colors from "@/constants/colors";
 import { defaultStyles } from "@/constants/styles";
 import { useBalanceStore } from "@/store/balanceStore";
-import MoreActionIcon from "./MoreActionIcon";
-import RoundIconButton from "./RoundIconButton";
 
 const styles = StyleSheet.create({
   account: {
